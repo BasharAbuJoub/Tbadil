@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     //
+    protected $fillable = ['book_id', 'seller_id', 'buyer_id', 'issuer_id', 'status',
+        'purchase_time' ,'rating'];
+
+
     public function buyer(){
         return $this->belongsTo('App/User','buyer_id');
     }
@@ -24,7 +28,7 @@ class Order extends Model
     }
 
     public function university(){
-        return $this->book();
+        return $this->book()->university();
     }
 
 }

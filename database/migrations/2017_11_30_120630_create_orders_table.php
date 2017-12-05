@@ -19,7 +19,7 @@ class CreateOrdersTable extends Migration
             $table->integer('seller_id');
             $table->integer('buyer_id')->nullable();
             $table->integer('issuer_id')->nullable();
-            $table->smallInteger('status')->default(0);
+            $table->smallInteger('status')->default(0);//0 not processed, 1 success, 2 cancelled
             $table->timestamp('purchase_time')->nullable();
             $table->smallInteger('rating')->nullable();
             $table->timestamps();

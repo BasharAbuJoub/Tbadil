@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+Route::get('admin/orders', 'AdminController@orders')->middleware('auth');
+
+Route::get('admin/books', 'AdminController@books')->middleware('auth');
+
+Route::get('admin/universities', 'AdminController@universities')->middleware('auth');
+
+
+
+
