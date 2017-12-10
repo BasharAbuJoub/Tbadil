@@ -25,6 +25,9 @@ class CreateUsersTable extends Migration
             $table->double('balance')->default(0);
             $table->rememberToken();
             $table->timestamps();
+            //
+            $table->foreign('university_id')->references('id')->on('universities');
+
         });
     }
 

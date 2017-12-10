@@ -1,0 +1,26 @@
+
+
+
+body{
+  background-color: $body-bg !important;
+}
+
+.navbar{
+  box-shadow: 0px -7px 20px 0px;
+}
+
+
+.field{
+  text-align: right;
+}
+
+input{
+  text-align: right;
+}
+
+.control{
+  text-align: right;
+}
+.b-checkbox.checkbox input[type=checkbox] + .check {
+  margin-left: 10px;
+}

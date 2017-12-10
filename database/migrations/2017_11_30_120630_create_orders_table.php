@@ -23,6 +23,12 @@ class CreateOrdersTable extends Migration
             $table->timestamp('purchase_time')->nullable();
             $table->smallInteger('rating')->nullable();
             $table->timestamps();
+            //
+            $table->foreign('book_id')->references('id')->on('books');
+            $table->foreign('seller_id')->references('id')->on('users');
+            $table->foreign('buyer_id')->references('id')->on('users');
+            $table->foreign('issuer_id')->references('id')->on('users');
+
         });
     }
 

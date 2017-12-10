@@ -5,5 +5,17 @@
 // Variables
 @import "variables";
 
-// Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+//Font awesome
+@import "~font-awesome/scss/font-awesome";
+
+@import "buefy";
+
+//Bulma
+@import "~bulma/bulma";
+
+//Bulma Vue Modules (Buefy)
+@import "~buefy/src/scss/buefy";
+
+//Custom SASS
+@import "style";
+

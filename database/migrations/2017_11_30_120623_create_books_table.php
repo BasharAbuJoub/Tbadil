@@ -21,6 +21,8 @@ class CreateBooksTable extends Migration
             $table->integer('university_id');
             $table->double('price');
             $table->timestamps();
+
+            $table->foreign('university_id')->references('id')->on('universities');
         });
     }
 
