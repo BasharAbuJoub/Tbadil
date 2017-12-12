@@ -15,10 +15,10 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('book_id');
-            $table->integer('seller_id');
-            $table->integer('buyer_id')->nullable();
-            $table->integer('issuer_id')->nullable();
+            $table->integer('book_id')->unsigned();
+            $table->integer('seller_id')->unsigned();
+            $table->integer('buyer_id')->nullable()->unsigned();
+            $table->integer('issuer_id')->nullable()->unsigned();
             $table->smallInteger('status')->default(0);//0 not processed, 1 success, 2 cancelled
             $table->timestamp('purchase_time')->nullable();
             $table->smallInteger('rating')->nullable();

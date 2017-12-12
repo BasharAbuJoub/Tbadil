@@ -7,7 +7,7 @@ Route::get('/', function () {
 
 //Testing
 
-Route::view('/profile','profile.index');
+Route::view('/profile','profile.index')->name('profile');
 
 
 //Production
@@ -19,7 +19,7 @@ Route::get('admin/books', 'AdminController@books')->middleware('auth')->name('Ah
 Route::get('admin/universities', 'AdminController@universities')->middleware('auth');
 
 
-
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 
 Auth::routes();

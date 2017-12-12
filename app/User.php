@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
@@ -27,16 +28,18 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+
     public function university(){
-        return $this->belongsTo('App/University');
+        return $this->belongsTo('App\University')->first();
     }
 
+
     public function purchaseOrders(){
-        return $this->hasMany('App/Order', 'buyer_id');
+        return $this->hasMany('App\Order', 'buyer_id');
     }
 
     public function sellOrders(){
-        return $this->hasMany('App/Order', 'seller_id');
+        return $this->hasMany('App\Order','seller_id');
     }
 
 

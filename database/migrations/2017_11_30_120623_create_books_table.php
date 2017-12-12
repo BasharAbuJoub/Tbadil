@@ -18,12 +18,15 @@ class CreateBooksTable extends Migration
             $table->string('name_ar');
             $table->string('name_en');
             $table->string('year');
-            $table->integer('university_id');
+            $table->integer('university_id')->unsigned();
             $table->double('price');
             $table->timestamps();
 
-            $table->foreign('university_id')->references('id')->on('universities');
+
+            $table->foreign('university_id')->references('id')->on('universities')->onDelete('cascade');;
         });
+
+
     }
 
     /**

@@ -18,7 +18,11 @@ class CreateUniversitiesTable extends Migration
             $table->string('name_ar');
             $table->string('name_en');
             $table->timestamps();
+
         });
+
+
+
     }
 
     /**

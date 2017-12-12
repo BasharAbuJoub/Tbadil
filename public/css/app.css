@@ -17254,3 +17254,12 @@ input {
   margin-left: 10px;
 }
 
+.table thead th {
+  text-align: right;
+}
+
+.table td,
+.table th {
+  text-align: right;
+}
+

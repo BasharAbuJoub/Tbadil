@@ -21,6 +21,14 @@ input{
 .control{
   text-align: right;
 }
+
 .b-checkbox.checkbox input[type=checkbox] + .check {
   margin-left: 10px;
+}
+
+.table thead th{
+  text-align: right;
+}
+.table td, .table th{
+  text-align: right;
 }

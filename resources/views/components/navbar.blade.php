@@ -15,16 +15,16 @@
             <div class="navbar-start">
             </div>
             <div class="navbar-end">
-                @if(!Auth::guest())
-                    <a class="navbar-item is-tab" href="#">التسجيل</a>
-                    <a href="#" class="navbar-item is-tab">دخول</a>
+                @if(Auth::guest())
+                    <a href="{{route('register')}}" class="navbar-item is-tab">التسجيل</a>
+                    <a href="{{route('login')}}" class="navbar-item is-tab">دخول</a>
                 @else
                     <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link is-tab" href="#">حسابي</a>
+                        <a class="navbar-link is-tab" href="{{route('profile')}}">حسابي</a>
                         <div class="navbar-dropdown is-right">
                             <a class="navbar-item" href="#">الملف الشخصي</a>
                             <hr class="navbar-divider">
-                            <a class="navbar-item" href="#">خروج</a>
+                            <a class="navbar-item" href="{{url('logout')}}">خروج</a>
                         </div>
                     </div>
                 @endif

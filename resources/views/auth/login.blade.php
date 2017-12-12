@@ -5,10 +5,17 @@
     تسجيل الدخول
 @endcomponent
 
+
+
+
 <div class="container" style="min-height: 60vh;">
+
+
+
 
     <div class="columns is-centered " style="margin-top: 3rem;">
         <div class="column is-half">
+
             <div class="card">
                 <div class="card-content">
 
@@ -43,6 +50,8 @@
                                 <b-checkbox style="direction: rtl;" name="remeber">تذكرني </b-checkbox>
                             </div>
                         </div>
+
+
 
                         <div class="field">
                             <div class="control">
