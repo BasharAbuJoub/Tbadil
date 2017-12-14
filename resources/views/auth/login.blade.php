@@ -53,9 +53,10 @@
 
 
 
+
                         <div class="field">
                             <div class="control">
-                                <button class="button is-info">دخول</button>
+                                <button class="button is-primary">دخول</button>
                             </div>
                         </div>
                     </form>

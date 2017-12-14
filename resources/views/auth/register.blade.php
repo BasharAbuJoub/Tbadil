@@ -1,77 +1,149 @@
 @extends('components.main')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
 
-                <div class="panel-body">
+
+    @component('components.subheader')
+        التسجيل
+    @endcomponent
+<div class="container" style="margin-top: 3rem;margin-bottom: 10rem;">
+
+    <div class="columns is-centered">
+        <div class="column is-half">
+
+            <div class="card">
+
+
+                <header class="card-header" dir="rtl">
+                    <p class="card-header-title">
+                        يرجى تعبئة البيانات التالية
+                    </p>
+                </header>
+
+
+
+
+                <div class="card-content">
+
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                        @if(!empty($erros))
+                            {{dd($errors)}}
+                        @endif
 
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
+
+                        <div class="field">
+                            <label class="label">الإسم الثلاثي</label>
+                            <div class="control">
+                                <input class="input {{ $errors->has('name') ? ' is-danger' : '' }}" placeholder="الإسم" type="text" name="name" value="{{ old('name') }}" required>
+                            </div>
+                            @if ($errors->has('name'))
+                                <p class="help is-danger">{{ $errors->first('name') }}</p>
+                            @endif
+                        </div>
+
+                        <div class="field">
+                            <label class="label">البريد الإلكتروني</label>
+                            <div class="control">
+                                <input class="input {{ $errors->has('email') ? ' is-danger' : '' }}" placeholder="example@domain.com" type="email" name="email" value="{{ old('email') }}" required>
+                            </div>
+                            @if ($errors->has('email'))
+                                <p class="help is-danger">{{ $errors->first('email') }}</p>
+                            @endif
+                        </div>
+
+
+                        <div class="columns" dir="rtl">
+                            <div class="column">
+                                <div class="field">
+                                    <label class="label">كلمة المرور</label>
+                                    <div class="control">
+                                        <input class="input {{ $errors->has('password') ? ' is-danger' : '' }}" placeholder="كلمة المرور" type="password" name="password" value="{{ old('password') }}" required>
+                                    </div>
+                                    @if ($errors->has('password'))
+                                        <p class="help is-danger">{{ $errors->first('password') }}</p>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="field">
+                                    <label class="label">تأكيد كلمة المرور</label>
+                                    <div class="control">
+                                        <input class="input" placeholder="أعد كتابة كلمة المرور" type="password" name="password_confirmation" value="{{ old('password_confirmation') }}" required>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
+
+
+
+
+
+
+                        <div class="columns" dir="rtl">
+                            <div class="column">
+                                <div class="field">
+                                    <label class="label">رقم الهاتف</label>
+                                    <div class="control">
+                                        <input class="input {{ $errors->has('phone') ? ' is-danger' : '' }}" placeholder="الهاتف"  name="phone" value="{{ old('phone') }}" required>
+                                    </div>
+                                    @if ($errors->has('phone'))
+                                        <p class="help is-danger">{{ $errors->first('phone') }}</p>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="column">
+                                <template>
+                                    <b-field label="تاريخ الميلاد">
+                                        <b-datepicker
+                                                icon-pack="fa"
+                                                name="birth"
+                                                placeholder="الميلاد"
+                                                icon="calendar"
+                                                :readonly="false">
+                                        </b-datepicker>
+                                    </b-field>
+                                </template>
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
 
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
+                        <div class="field">
+                            <label class="label">الجامعة</label>
+                            <div class="control">
+
+                                <div class="select is-fullwidth" style="direction: rtl;">
+                                    <select name="university" required>
+                                        <option value="1">جامعة الأميرة سمية</option>
+                                        <option value="2">جامعة العلوم التطبيقية الخاصة</option>
+                                    </select>
+                                </div>
+
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
 
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
+
+                        <div class="field">
+                            <div class="control">
+                                <button class="button is-primary">تسجيل</button>
                             </div>
                         </div>
                     </form>
+
                 </div>
+
             </div>
+
         </div>
     </div>
+
 </div>
 @endsection

@@ -22,13 +22,13 @@
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-link is-tab" href="{{route('profile')}}">حسابي</a>
                         <div class="navbar-dropdown is-right">
-                            <a class="navbar-item" href="#">الملف الشخصي</a>
+                            <a class="navbar-item" href="{{route('profile')}}">الملف الشخصي</a>
                             <hr class="navbar-divider">
                             <a class="navbar-item" href="{{url('logout')}}">خروج</a>
                         </div>
                     </div>
                 @endif
-                <a class="navbar-item is-tab" href="#">الرئيسية</a>
+                <a class="navbar-item is-tab" href="{{url('/')}}">الرئيسية</a>
             </div>
         </div>
     </div>

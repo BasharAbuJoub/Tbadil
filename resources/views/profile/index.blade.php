@@ -20,8 +20,8 @@
     </div>
 
 
-    <div class="hero is-medium is-info">
-        <div class="hero-body">
+    <div class="hero is-medium is-primary is-bold" >
+        <div class="hero-body" style="padding: 4rem 0;">
 
 
             <div class="container has-text-centered">
