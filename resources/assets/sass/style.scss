@@ -32,3 +32,21 @@ input{
 .table td, .table th{
   text-align: right;
 }
+
+.navbar-dropdown a.navbar-item{
+  padding-right: 1rem;
+}
+
+//Navbar icon to the left (Arabic layout)
+.navbar-link{
+  padding-right: 1rem;
+}
+.navbar-link::after{
+  position: initial;
+  margin-top: 0;
+  margin-right: 0.6rem;
+}
+
+.table th, .table td{
+  text-align: right;
+}

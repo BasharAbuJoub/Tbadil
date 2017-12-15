@@ -98,35 +98,22 @@
                                 </div>
                             </div>
                             <div class="column">
-                                <template>
-                                    <b-field label="تاريخ الميلاد">
-                                        <b-datepicker
-                                                icon-pack="fa"
-                                                name="birth"
-                                                placeholder="الميلاد"
-                                                icon="calendar"
-                                                :readonly="false">
-                                        </b-datepicker>
-                                    </b-field>
-                                </template>
+                                <b-field label="تاريخ الميلاد">
+                                    <b-datepicker
+                                            icon-pack="fa"
+                                            name="birth"
+                                            placeholder="الميلاد"
+                                            icon="calendar"
+                                            :readonly="false">
+                                    </b-datepicker>
+                                </b-field>
                             </div>
                         </div>
 
 
 
-                        <div class="field">
-                            <label class="label">الجامعة</label>
-                            <div class="control">
 
-                                <div class="select is-fullwidth" style="direction: rtl;">
-                                    <select name="university" required>
-                                        <option value="1">جامعة الأميرة سمية</option>
-                                        <option value="2">جامعة العلوم التطبيقية الخاصة</option>
-                                    </select>
-                                </div>
-
-                            </div>
-                        </div>
+                        <uni-input></uni-input>
 
 
 

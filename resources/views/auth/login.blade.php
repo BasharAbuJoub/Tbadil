@@ -26,7 +26,7 @@
                         <div class="field">
                             <label class="label">البريد الإلكتروني</label>
                             <div class="control">
-                                <input class="input {{ $errors->has('email') ? ' is-danger' : '' }}" placeholder="البريد الإلكتروني" type="email" name="email" value="{{ old('email') }}" required autofocus>
+                                <input class="input {{ $errors->has('email') ? ' is-danger' : '' }}" placeholder="example@domain.com" type="email" name="email" value="{{ old('email') }}" required autofocus>
                             </div>
                             @if ($errors->has('email'))
                                 <p class="help is-danger">{{ $errors->first('email') }}</p>

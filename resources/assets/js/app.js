@@ -8,6 +8,13 @@ import Buefy from 'buefy';
 Vue.use(Buefy);
 
 
+
+Vue.component(
+    'uni-input',
+    require('./components/universtiesInput.vue')
+);
+
+
 var app = new Vue({
   el: '#app',
   data: {

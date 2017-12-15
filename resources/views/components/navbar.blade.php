@@ -14,7 +14,8 @@
         <div id="navbar-menu" class="navbar-menu">
             <div class="navbar-start">
             </div>
-            <div class="navbar-end">
+            <div class="navbar-end" style="direction: rtl;">
+                <a class="navbar-item is-tab" href="{{url('/')}}">الرئيسية</a>
                 @if(Auth::guest())
                     <a href="{{route('register')}}" class="navbar-item is-tab">التسجيل</a>
                     <a href="{{route('login')}}" class="navbar-item is-tab">دخول</a>
@@ -27,43 +28,32 @@
                             <a class="navbar-item" href="{{url('logout')}}">خروج</a>
                         </div>
                     </div>
+
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link is-tab">الكتب</a>
+                        <div class="navbar-dropdown is-right">
+                            <a class="navbar-item" href="{{route('books.sell')}}">بيع</a>
+                            <a class="navbar-item" href="{{route('books.buy')}}">شراء</a>
+                        </div>
+                    </div>
+
+                    @if(\Illuminate\Support\Facades\Auth::user()->role > 2)
+                        <div class="navbar-item has-dropdown is-hoverable">
+                            <a class="navbar-link is-tab">لوحة التحكم</a>
+                            <div class="navbar-dropdown is-right">
+                                <a class="navbar-item" href="{{route('admin.books')}}">الكتب</a>
+                                <a class="navbar-item" href="{{route('admin.universities')}}">الجامعات</a>
+                                <a class="navbar-item" href="{{route('admin.users')}}">الأعضاء</a>
+                            </div>
+                        </div>
+
+                    @endif
+
+
                 @endif
-                <a class="navbar-item is-tab" href="{{url('/')}}">الرئيسية</a>
+
             </div>
         </div>
     </div>
 </nav>
 
-{{--Burger Script--}}
-<script>
-
-    document.addEventListener('DOMContentLoaded', function () {
-
-        // Get all "navbar-burger" elements
-        var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-
-        // Check if there are any navbar burgers
-        if ($navbarBurgers.length > 0) {
-
-            // Add a click event on each of them
-            $navbarBurgers.forEach(function ($el) {
-                $el.addEventListener('click', function () {
-
-                    // Get the target from the "data-target" attribute
-                    var target = $el.dataset.target;
-                    var $target = document.getElementById(target);
-
-                    // Toggle the class on both the "navbar-burger" and the "navbar-menu"
-                    $el.classList.toggle('is-active');
-                    $target.classList.toggle('is-active');
-
-                });
-            });
-        }
-
-    });
-
-
-
-
-</script>

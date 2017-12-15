@@ -74,140 +74,100 @@
 
     <div class="container" style="margin-bottom: 100px;">
 
+        @if(session()->has('updated'))
+            <b-notification type="is-success">
+                <p class="has-text-centered">
+                    تم تحديث الملف الشخصي بنجاح
+                </p>
+            </b-notification>
+        @endif
+
+        <div class="card" style="margin-bottom: 20px;">
+            <div class="card-header " dir="rtl">
+                <p class="card-header-title ">
+                    البيانات الشخصية
+                </p>
+            </div>
+            <div class="card-content">
+
+                <form action="{{route('profile.update')}}" method="post">
+                    {{csrf_field()}}
+                    <div class="columns is-centered">
+
+                        <div class="column">
+                            <div class="field">
+                                <label class="label">رقم الهاتف</label>
+                                <div class="control">
+                                    <input class="input {{ $errors->has('phone') ? ' is-danger' : '' }}" placeholder="الهاتف"  name="phone" value="{{$user->phone}}" required>
+                                </div>
+                                @if ($errors->has('phone'))
+                                    <p class="help is-danger">{{ $errors->first('phone') }}</p>
+                                @endif
+                            </div>
+                        </div>
+
+
+                        <div class="column">
+                            <div class="field">
+                                <label class="label">الإسم</label>
+                                <div class="control">
+                                    <input class="input {{ $errors->has('name') ? ' is-danger' : '' }}" placeholder="الإسم"  name="name" value="{{ $user->name }}" required>
+                                </div>
+                                @if ($errors->has('name'))
+                                    <p class="help is-danger">{{ $errors->first('name') }}</p>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="column">
+
+                            <div class="field">
+                                <label class="label">البريد الإلكتروني</label>
+                                <div class="control">
+                                    <input class="input {{ $errors->has('email') ? ' is-danger' : '' }}" placeholder="example@domain.com" type="email" name="email" value="{{$user->email}}" required>
+                                </div>
+                                @if ($errors->has('email'))
+                                    <p class="help is-danger">{{ $errors->first('email') }}</p>
+                                @endif
+                            </div>
+
+                        </div>
+
+
+
+
+
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <button class="button is-primary">تحديث البيانات</button>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+                </form>
+
+            </div>
+        </div>
+
+
         <div class="box has-text-centered">
 
             <h3 class="subtitle">سجل الطلبات <span class="icon is-small"><i class="fa fa-clock-o"></i></span></h3>
 
-            <style>
-                .table th, .table td{
-                    text-align: right;
-                }
-            </style>
-            <b-tabs position="is-centered" v-model="activeTab" >
-                <b-tab-item label="ملغى" icon-pack="fa" icon="ban">
-                    <table class="table is-hoverable is-fullwidth" dir="rtl">
-
-                        <thead>
-                        <tr>
-                            <th>العملية</th>
-                            <th>النوع</th>
-                            <th>الكتاب</th>
-                            <th>القيمة</th>
-                            <th>الحالة</th>
-                            <th>الإجراء</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>13325</td>
-                            <td>شراء</td>
-                            <td>العلوم العسكرية</td>
-                            <td>3.00</td>
-                            <td>تمت</td>
-                            <td>
-                                <a href="#" class="button is-small" title="Order page">
-                                <span class="icon is-small">
-                                  <i class="fa fa-info"></i>
-                                </span>
-                                </a>
-                                <a href="#" class="button is-small" title="Cancel">
-                                <span class="icon is-small">
-                                  <i class="fa fa-trash-o"></i>
-                                </span>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>13325</td>
-                            <td>شراء</td>
-                            <td>العلوم العسكرية</td>
-                            <td>3.00</td>
-                            <td>تمت</td>
-                            <td>
-                                <a href="#" class="button is-small" title="Order page">
-                                <span class="icon is-small">
-                                  <i class="fa fa-info"></i>
-                                </span>
-                                </a>
-                                <a href="#" class="button is-small" title="Cancel">
-                                <span class="icon is-small">
-                                  <i class="fa fa-trash-o"></i>
-                                </span>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>13325</td>
-                            <td>شراء</td>
-                            <td>العلوم العسكرية</td>
-                            <td>3.00</td>
-                            <td>تمت</td>
-                            <td>
-                                <a href="#" class="button is-small" title="Order page">
-                                <span class="icon is-small">
-                                  <i class="fa fa-info"></i>
-                                </span>
-                                </a>
-                                <a href="#" class="button is-small" title="Cancel">
-                                <span class="icon is-small">
-                                  <i class="fa fa-trash-o"></i>
-                                </span>
-                                </a>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>13325</td>
-                            <td>شراء</td>
-                            <td>العلوم العسكرية</td>
-                            <td>3.00</td>
-                            <td>تمت</td>
-                            <td>
-                                <a href="#" class="button is-small" title="Order page">
-                                <span class="icon is-small">
-                                  <i class="fa fa-info"></i>
-                                </span>
-                                </a>
-                                <a href="#" class="button is-small" title="Cancel">
-                                <span class="icon is-small">
-                                  <i class="fa fa-trash-o"></i>
-                                </span>
-                                </a>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>13325</td>
-                            <td>شراء</td>
-                            <td>العلوم العسكرية</td>
-                            <td>3.00</td>
-                            <td>تمت</td>
-                            <td>
-                                <a href="#" class="button is-small" title="Order page">
-                                <span class="icon is-small">
-                                  <i class="fa fa-info"></i>
-                                </span>
-                                </a>
-                                <a href="#" class="button is-small" title="Cancel">
-                                <span class="icon is-small">
-                                  <i class="fa fa-trash-o"></i>
-                                </span>
-                                </a>
-                            </td>
-                        </tr>
-
-                        </tbody>
-
-                    </table>
-
-                </b-tab-item>
+            <b-tabs position="is-centered"  >
                 <b-tab-item label="بيع" icon-pack="fa" icon="usd">
                     <table class="table is-hoverable is-fullwidth" dir="rtl">
 
                         <thead>
                         <tr>
                             <th>العملية</th>
-                            <th>النوع</th>
                             <th>الكتاب</th>
                             <th>القيمة</th>
                             <th>الحالة</th>
@@ -215,104 +175,26 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>13325</td>
-                            <td>شراء</td>
-                            <td>العلوم العسكرية</td>
-                            <td>3.00</td>
-                            <td>تمت</td>
-                            <td>
-                                <a href="#" class="button is-small" title="Order page">
+                        @foreach($user->sellOrders()->get() as $order )
+                            <tr>
+                                <td>{{$order->id}}</td>
+                                <td>{{$order->book()->name_ar}}</td>
+                                <td>{{$order->book()->price}}د</td>
+                                <td>{{$order->status == 1 ? 'تمت ' : 'انتظار'}}</td>
+                                <td>
+                                    <a href="#" class="button is-small" title="Order page">
                                 <span class="icon is-small">
                                   <i class="fa fa-info"></i>
                                 </span>
-                                </a>
-                                <a href="#" class="button is-small" title="Cancel">
+                                    </a>
+                                    <a href="#" class="button is-small" title="Cancel">
                                 <span class="icon is-small">
                                   <i class="fa fa-trash-o"></i>
                                 </span>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>13325</td>
-                            <td>شراء</td>
-                            <td>العلوم العسكرية</td>
-                            <td>3.00</td>
-                            <td>تمت</td>
-                            <td>
-                                <a href="#" class="button is-small" title="Order page">
-                                <span class="icon is-small">
-                                  <i class="fa fa-info"></i>
-                                </span>
-                                </a>
-                                <a href="#" class="button is-small" title="Cancel">
-                                <span class="icon is-small">
-                                  <i class="fa fa-trash-o"></i>
-                                </span>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>13325</td>
-                            <td>شراء</td>
-                            <td>العلوم العسكرية</td>
-                            <td>3.00</td>
-                            <td>تمت</td>
-                            <td>
-                                <a href="#" class="button is-small" title="Order page">
-                                <span class="icon is-small">
-                                  <i class="fa fa-info"></i>
-                                </span>
-                                </a>
-                                <a href="#" class="button is-small" title="Cancel">
-                                <span class="icon is-small">
-                                  <i class="fa fa-trash-o"></i>
-                                </span>
-                                </a>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>13325</td>
-                            <td>شراء</td>
-                            <td>العلوم العسكرية</td>
-                            <td>3.00</td>
-                            <td>تمت</td>
-                            <td>
-                                <a href="#" class="button is-small" title="Order page">
-                                <span class="icon is-small">
-                                  <i class="fa fa-info"></i>
-                                </span>
-                                </a>
-                                <a href="#" class="button is-small" title="Cancel">
-                                <span class="icon is-small">
-                                  <i class="fa fa-trash-o"></i>
-                                </span>
-                                </a>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>13325</td>
-                            <td>شراء</td>
-                            <td>العلوم العسكرية</td>
-                            <td>3.00</td>
-                            <td>تمت</td>
-                            <td>
-                                <a href="#" class="button is-small" title="Order page">
-                                <span class="icon is-small">
-                                  <i class="fa fa-info"></i>
-                                </span>
-                                </a>
-                                <a href="#" class="button is-small" title="Cancel">
-                                <span class="icon is-small">
-                                  <i class="fa fa-trash-o"></i>
-                                </span>
-                                </a>
-                            </td>
-                        </tr>
-
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
 
                     </table>
@@ -324,7 +206,6 @@
                         <thead>
                         <tr>
                             <th>العملية</th>
-                            <th>النوع</th>
                             <th>الكتاب</th>
                             <th>القيمة</th>
                             <th>الحالة</th>
@@ -332,227 +213,31 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>13325</td>
-                            <td>شراء</td>
-                            <td>العلوم العسكرية</td>
-                            <td>3.00</td>
-                            <td>تمت</td>
-                            <td>
-                                <a href="#" class="button is-small" title="Order page">
+                        @foreach($user->purchaseOrders()->get() as $order )
+                            <tr>
+                                <td>{{$order->id}}</td>
+                                <td>{{$order->book()->name_ar}}</td>
+                                <td>{{$order->book()->price}}د</td>
+                                <td>{{$order->status == 1 ? 'تمت ' : 'انتظار'}}</td>
+                                <td>
+                                    <a href="#" class="button is-small" title="Order page">
                                 <span class="icon is-small">
                                   <i class="fa fa-info"></i>
                                 </span>
-                                </a>
-                                <a href="#" class="button is-small" title="Cancel">
+                                    </a>
+                                    <a href="#" class="button is-small" title="Cancel">
                                 <span class="icon is-small">
                                   <i class="fa fa-trash-o"></i>
                                 </span>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>13325</td>
-                            <td>شراء</td>
-                            <td>العلوم العسكرية</td>
-                            <td>3.00</td>
-                            <td>تمت</td>
-                            <td>
-                                <a href="#" class="button is-small" title="Order page">
-                                <span class="icon is-small">
-                                  <i class="fa fa-info"></i>
-                                </span>
-                                </a>
-                                <a href="#" class="button is-small" title="Cancel">
-                                <span class="icon is-small">
-                                  <i class="fa fa-trash-o"></i>
-                                </span>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>13325</td>
-                            <td>شراء</td>
-                            <td>العلوم العسكرية</td>
-                            <td>3.00</td>
-                            <td>تمت</td>
-                            <td>
-                                <a href="#" class="button is-small" title="Order page">
-                                <span class="icon is-small">
-                                  <i class="fa fa-info"></i>
-                                </span>
-                                </a>
-                                <a href="#" class="button is-small" title="Cancel">
-                                <span class="icon is-small">
-                                  <i class="fa fa-trash-o"></i>
-                                </span>
-                                </a>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>13325</td>
-                            <td>شراء</td>
-                            <td>العلوم العسكرية</td>
-                            <td>3.00</td>
-                            <td>تمت</td>
-                            <td>
-                                <a href="#" class="button is-small" title="Order page">
-                                <span class="icon is-small">
-                                  <i class="fa fa-info"></i>
-                                </span>
-                                </a>
-                                <a href="#" class="button is-small" title="Cancel">
-                                <span class="icon is-small">
-                                  <i class="fa fa-trash-o"></i>
-                                </span>
-                                </a>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>13325</td>
-                            <td>شراء</td>
-                            <td>العلوم العسكرية</td>
-                            <td>3.00</td>
-                            <td>تمت</td>
-                            <td>
-                                <a href="#" class="button is-small" title="Order page">
-                                <span class="icon is-small">
-                                  <i class="fa fa-info"></i>
-                                </span>
-                                </a>
-                                <a href="#" class="button is-small" title="Cancel">
-                                <span class="icon is-small">
-                                  <i class="fa fa-trash-o"></i>
-                                </span>
-                                </a>
-                            </td>
-                        </tr>
-
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
 
                     </table>
 
                 </b-tab-item>
-                <b-tab-item label="الكل" icon-pack="fa" icon="file-text-o">
-                    <table class="table is-hoverable is-fullwidth" dir="rtl">
-
-                        <thead>
-                        <tr>
-                            <th>العملية</th>
-                            <th>النوع</th>
-                            <th>الكتاب</th>
-                            <th>القيمة</th>
-                            <th>الحالة</th>
-                            <th>الإجراء</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>13325</td>
-                            <td>شراء</td>
-                            <td>العلوم العسكرية</td>
-                            <td>3.00</td>
-                            <td>تمت</td>
-                            <td>
-                                <a href="#" class="button is-small" title="Order page">
-                                <span class="icon is-small">
-                                  <i class="fa fa-info"></i>
-                                </span>
-                                </a>
-                                <a href="#" class="button is-small" title="Cancel">
-                                <span class="icon is-small">
-                                  <i class="fa fa-trash-o"></i>
-                                </span>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>13325</td>
-                            <td>شراء</td>
-                            <td>العلوم العسكرية</td>
-                            <td>3.00</td>
-                            <td>تمت</td>
-                            <td>
-                                <a href="#" class="button is-small" title="Order page">
-                                <span class="icon is-small">
-                                  <i class="fa fa-info"></i>
-                                </span>
-                                </a>
-                                <a href="#" class="button is-small" title="Cancel">
-                                <span class="icon is-small">
-                                  <i class="fa fa-trash-o"></i>
-                                </span>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>13325</td>
-                            <td>شراء</td>
-                            <td>العلوم العسكرية</td>
-                            <td>3.00</td>
-                            <td>تمت</td>
-                            <td>
-                                <a href="#" class="button is-small" title="Order page">
-                                <span class="icon is-small">
-                                  <i class="fa fa-info"></i>
-                                </span>
-                                </a>
-                                <a href="#" class="button is-small" title="Cancel">
-                                <span class="icon is-small">
-                                  <i class="fa fa-trash-o"></i>
-                                </span>
-                                </a>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>13325</td>
-                            <td>شراء</td>
-                            <td>العلوم العسكرية</td>
-                            <td>3.00</td>
-                            <td>تمت</td>
-                            <td>
-                                <a href="#" class="button is-small" title="Order page">
-                                <span class="icon is-small">
-                                  <i class="fa fa-info"></i>
-                                </span>
-                                </a>
-                                <a href="#" class="button is-small" title="Cancel">
-                                <span class="icon is-small">
-                                  <i class="fa fa-trash-o"></i>
-                                </span>
-                                </a>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>13325</td>
-                            <td>شراء</td>
-                            <td>العلوم العسكرية</td>
-                            <td>3.00</td>
-                            <td>تمت</td>
-                            <td>
-                                <a href="#" class="button is-small" title="Order page">
-                                <span class="icon is-small">
-                                  <i class="fa fa-info"></i>
-                                </span>
-                                </a>
-                                <a href="#" class="button is-small" title="Cancel">
-                                <span class="icon is-small">
-                                  <i class="fa fa-trash-o"></i>
-                                </span>
-                                </a>
-                            </td>
-                        </tr>
-
-                        </tbody>
-
-                    </table>
-
-                </b-tab-item>
-
 
             </b-tabs>
 
@@ -567,5 +252,7 @@
 
 
     </div>
+
+
 
 @endsection
