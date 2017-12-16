@@ -20,6 +20,9 @@
                     <a href="{{route('register')}}" class="navbar-item is-tab">التسجيل</a>
                     <a href="{{route('login')}}" class="navbar-item is-tab">دخول</a>
                 @else
+
+                    <a class="navbar-item" href="{{route('books.index')}}">الكتب</a>
+
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-link is-tab" href="{{route('profile')}}">حسابي</a>
                         <div class="navbar-dropdown is-right">
@@ -29,15 +32,8 @@
                         </div>
                     </div>
 
-                    <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link is-tab">الكتب</a>
-                        <div class="navbar-dropdown is-right">
-                            <a class="navbar-item" href="{{route('books.sell')}}">بيع</a>
-                            <a class="navbar-item" href="{{route('books.buy')}}">شراء</a>
-                        </div>
-                    </div>
 
-                    @if(\Illuminate\Support\Facades\Auth::user()->role > 2)
+                @if(Auth::user()->role > 2)
                         <div class="navbar-item has-dropdown is-hoverable">
                             <a class="navbar-link is-tab">لوحة التحكم</a>
                             <div class="navbar-dropdown is-right">
@@ -46,10 +42,7 @@
                                 <a class="navbar-item" href="{{route('admin.users')}}">الأعضاء</a>
                             </div>
                         </div>
-
-                    @endif
-
-
+                @endif
                 @endif
 
             </div>

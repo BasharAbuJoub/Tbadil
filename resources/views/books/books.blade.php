@@ -3,9 +3,7 @@
 @section('content')
 
     @component('components.subheader')
-
-    شراء كتاب
-
+        بيع الكتب
     @endcomponent
 
 

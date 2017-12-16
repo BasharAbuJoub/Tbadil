@@ -78,13 +78,6 @@
                         </div>
 
 
-
-
-
-
-
-
-
                         <div class="columns" dir="rtl">
                             <div class="column">
                                 <div class="field">

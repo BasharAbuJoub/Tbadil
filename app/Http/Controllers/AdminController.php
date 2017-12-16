@@ -7,4 +7,13 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     //
+
+
+    public function booksIndex(){
+
+
+        return view('admin.books');
+
+    }
+
 }

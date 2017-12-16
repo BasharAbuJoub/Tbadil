@@ -14,15 +14,11 @@ Route::prefix('profile')->middleware('auth')->group(function (){
 
 
 //Books
-Route::prefix('book')->middleware('auth')->group(function (){
-    Route::get('/buy', 'BooksController@buyIndex')->name('books.buy');
-    Route::get('/sell', 'BooksController@sellIndex')->name('books.sell');
-});
-
+Route::resource('books', 'BooksController');
 
 //Admin
 Route::prefix('admin')->middleware('auth')->group(function (){
-    Route::get('/books', function (){})->name('admin.books');
+    Route::get('/books', 'AdminController@booksIndex')->name('admin.books');
     Route::get('/universities', function (){})->name('admin.universities');
     Route::get('/users', function (){})->name('admin.users');
 });

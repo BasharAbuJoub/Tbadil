@@ -5,7 +5,7 @@
 
             <div class="select is-fullwidth" style="direction: rtl;">
                 <select id="uni" name="university" required>
-                    <option v-for="uni in unis" :val="uni.id">{{uni.name_ar}}</option>
+                    <option v-for="uni in unis" :value="uni.id">{{uni.name_ar}}</option>
                 </select>
             </div>
 

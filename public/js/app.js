@@ -19375,7 +19375,7 @@ var render = function() {
             "select",
             { attrs: { id: "uni", name: "university", required: "" } },
             _vm._l(_vm.unis, function(uni) {
-              return _c("option", { attrs: { val: uni.id } }, [
+              return _c("option", { domProps: { value: uni.id } }, [
                 _vm._v(_vm._s(uni.name_ar))
               ])
             })

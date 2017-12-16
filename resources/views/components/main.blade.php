@@ -26,17 +26,6 @@
     <script src="{{ mix('/js/app.js') }}"></script>
 
 
-    {{--Universities Input Script--}}
-
-    <script type="text/javascript">
-        axios.get("{{route('api.universities')}}")
-            .then(function (response) {
-                console.log(response.data);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-    </script>
 
 
     {{--Burger Script--}}

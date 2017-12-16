@@ -29,9 +29,9 @@
                 <span class="icon">
                   <i class="fa fa-5x fa-user-o"></i>
                 </span>
-                <h1 class="subtitle is-3" style="margin-top: 20px;margin-bottom: 10px;">{{Auth::user()->name}}</h1>
-                <h1 class="subtitle is-6" style="margin-top: 00px;">{{Auth::user()->university()->name_en}}</h1>
-                <h1 class="subtitle is-5">الرصيد : {{Auth::user()->balance}} دينار</h1>
+                <h1 class="subtitle is-3" style="margin-top: 20px;margin-bottom: 10px;">{{$user->name}}</h1>
+                <h1 class="subtitle is-6" style="margin-top: 00px;">{{$user->university()->name_en}}</h1>
+                <h1 class="subtitle is-5">الرصيد : {{$user->balance}} دينار</h1>
 
 
 
@@ -47,19 +47,19 @@
                 <div class="level-item has-text-centered">
                     <div>
                         <p class="heading">استلام</p>
-                        <p class="title">{{Auth::user()->purchaseOrders()->count()}}</p>
+                        <p class="title">{{$user->purchaseOrders()->count()}}</p>
                     </div>
                 </div>
                 <div class="level-item has-text-centered">
                     <div>
                         <p class="heading">بيع</p>
-                        <p class="title">{{Auth::user()->sellOrders()->count()}}</p>
+                        <p class="title">{{$user->sellOrders()->count()}}</p>
                     </div>
                 </div>
                 <div class="level-item has-text-centered">
                     <div>
                         <p class="heading">كلّي</p>
-                        <p class="title">{{Auth::user()->sellOrders()->count() + Auth::user()->purchaseOrders()->count()}}</p>
+                        <p class="title">{{$user->sellOrders()->count() + $user->purchaseOrders()->count()}}</p>
                     </div>
                 </div>
             </nav>
