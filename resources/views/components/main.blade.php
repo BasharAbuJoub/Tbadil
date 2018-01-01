@@ -21,14 +21,16 @@
         @yield('content')
 
         {{--@include('components.footer')--}}
+        @if(session('flash-msg'))
+            <flash-msg msg="{{session('flash-msg')}}"></flash-msg>
+        @endif
+
     </div>
 
 
 
+
     <script src="{{ mix('/js/app.js') }}"></script>
-
-
-
 
     {{--Burger Script--}}
     <script>

@@ -23,9 +23,19 @@ Vue.component(
     require('./components/allBooks.vue')
 );
 
-var app = new Vue({
+Vue.component(
+    'flash-msg',
+    require('./components/Flash.vue')
+);
+
+var vueApp = new Vue({
   el: '#app',
+    data: {
+      name: 'test'
+    }
 
 
 });
+
+
 

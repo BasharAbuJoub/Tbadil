@@ -74,7 +74,7 @@ class BooksController extends Controller
         //
 
         $book = Book::find($id);
-        $target = Order::where('book_id', $book->id)->where('buyer_id', null)->first();
+        $target = Order::where('book_id', $book->id)->where('status', 1)->first();
         return view('books.book')->with(compact('book'))->with(compact('target'));
 
     }

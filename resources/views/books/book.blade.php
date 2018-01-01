@@ -47,11 +47,11 @@
 									<td>
 										{{--If the book has sell offers assign one to the book--}}
 										@if($target != null)
-											<a href="#" class="button is-info">شراء</a>
+											<a href="{{route('order.buy',['id'=>$target->id])}}" class="button is-info">شراء</a>
 										@else
 											<a href="#" class="button is-danger is-outlined">الكتاب غير متوفر للشراء</a>
 										@endif
-										<a href="#" class="button is-info">بيع</a>
+										<a href="{{route('order.sell',['id'=>$book->id])}}" class="button is-info">بيع</a>
 									</td>
 								</tr>
 								</tbody>

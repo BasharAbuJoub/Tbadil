@@ -177,20 +177,20 @@
                         <tbody>
                         @foreach($user->sellOrders()->get() as $order )
                             <tr>
-                                <td>{{$order->id}}</td>
+                                <td><a href="{{route('order', ['id'=> $order->id])}}">{{$order->id}}</a></td>
                                 <td>{{$order->book()->name_ar}}</td>
                                 <td>{{$order->book()->price}}د</td>
                                 <td>{{$order->status == 1 ? 'تمت ' : 'انتظار'}}</td>
                                 <td>
-                                    <a href="#" class="button is-small" title="Order page">
-                                <span class="icon is-small">
-                                  <i class="fa fa-info"></i>
-                                </span>
+                                    <a href="{{route('order', ['id'=> $order->id])}}" class="button is-small" title="Order page">
+                                            <span class="icon is-small">
+                                              <i class="fa fa-info"></i>
+                                            </span>
                                     </a>
                                     <a href="#" class="button is-small" title="Cancel">
-                                <span class="icon is-small">
-                                  <i class="fa fa-trash-o"></i>
-                                </span>
+                                            <span class="icon is-small">
+                                              <i class="fa fa-trash-o"></i>
+                                            </span>
                                     </a>
                                 </td>
                             </tr>
@@ -215,20 +215,20 @@
                         <tbody>
                         @foreach($user->purchaseOrders()->get() as $order )
                             <tr>
-                                <td>{{$order->id}}</td>
+                                <td><a href="{{route('order', ['id'=> $order->id])}}">{{$order->id}}</a></td>
                                 <td>{{$order->book()->name_ar}}</td>
                                 <td>{{$order->book()->price}}د</td>
                                 <td>{{$order->status == 1 ? 'تمت ' : 'انتظار'}}</td>
                                 <td>
-                                    <a href="#" class="button is-small" title="Order page">
-                                <span class="icon is-small">
-                                  <i class="fa fa-info"></i>
-                                </span>
+                                    <a href="{{route('order', ['id'=> $order->id])}}" class="button is-small" title="Order page">
+                                            <span class="icon is-small">
+                                              <i class="fa fa-info"></i>
+                                            </span>
                                     </a>
                                     <a href="#" class="button is-small" title="Cancel">
-                                <span class="icon is-small">
-                                  <i class="fa fa-trash-o"></i>
-                                </span>
+                                            <span class="icon is-small">
+                                              <i class="fa fa-trash-o"></i>
+                                            </span>
                                     </a>
                                 </td>
                             </tr>
