@@ -97,44 +97,7 @@
 				<p class="card-header-title">البحث في الكتب</p>
 			</div>
 			<div class="card-content">
-				<div class="columns is-centered">
-					<div class="column is-half" dir="rtl">
-						<form action="">
-							<div class="columns">
-								<div class="field column is-three-quarters">
-									<div class="control">
-										<input type="text" class="input" placeholder="اسم الكتاب"  name="name_ar" required>
-									</div>
-								</div>
-								<div class="field column is-one-quarter">
-									<div class="control">
-										<button class="button is-primary is-fullwidth" type="submit"><span class="icon"><i class="fa fa-search"></i></span></button>
-									</div>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-
-				<section>
-					<table class="table table-bordered is-fullwidth" dir="rtl">
-						<thead>
-						<tr>
-							<th>اسم الكتاب</th>
-							<th>السعر</th>
-							<th>الإجراء</th>
-						</tr>
-						</thead>
-						<tbody>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						</tbody>
-					</table>
-				</section>
-
+				<all-books></all-books>
 			</div>
 		</div>
 

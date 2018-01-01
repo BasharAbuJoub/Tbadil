@@ -1631,6 +1631,148 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0&bustCache!./resources/assets/js/components/allBooks.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            search: "",
+            books: [],
+            universities: []
+        };
+    },
+    mounted: function mounted() {
+        var self = this;
+        axios.post('/api/books').then(function (response) {
+            self.books = response.data;
+            console.log(self.books);
+        }).catch(function (error) {
+            console.log(error);
+        });
+        axios.get('/api/universities').then(function (response) {
+            self.universities = response.data;
+        }).catch(function (error) {
+            console.log(error);
+        });
+    },
+
+    computed: {
+        filtered: function filtered() {
+            var _this = this;
+
+            return this.books.filter(function (book) {
+                return book.name_ar.toLowerCase().match(_this.search.toLowerCase()) || book.name_en.toLowerCase().match(_this.search.toLowerCase());
+            });
+        }
+    }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0&bustCache!./resources/assets/js/components/uniBooks.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            search: "",
+            books: []
+        };
+    },
+    mounted: function mounted() {
+        var self = this;
+        axios.post('/api/uniBooks').then(function (response) {
+            self.books = response.data;
+            console.log(self.books);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    },
+
+    computed: {
+        filtered: function filtered() {
+            var _this = this;
+
+            return this.books.filter(function (book) {
+                return book.name_ar.toLowerCase().match(_this.search.toLowerCase()) || book.name_en.toLowerCase().match(_this.search.toLowerCase());
+            });
+        }
+    }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0&bustCache!./resources/assets/js/components/universtiesInput.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1654,12 +1796,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['unis'],
+    data: function data() {
+        return {
+            unis: []
+        };
+    },
     mounted: function mounted() {
         var slef = this;
         axios.get('/api/universities').then(function (response) {
             slef.unis = response.data;
-            console.log(this.unis);
         }).catch(function (error) {
             console.log(error);
         });
@@ -19397,6 +19542,222 @@ if (false) {
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-b45d0940\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0&bustCache!./resources/assets/js/components/allBooks.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("section", [
+    _c("form", { attrs: { action: "" } }, [
+      _c("div", { staticClass: "columns is-centered" }, [
+        _c("div", { staticClass: "field column is-half" }, [
+          _c("div", { staticClass: "control" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.search,
+                  expression: "search"
+                }
+              ],
+              staticClass: "input",
+              attrs: {
+                type: "text",
+                placeholder: "اسم الكتاب",
+                name: "name_ar",
+                required: ""
+              },
+              domProps: { value: _vm.search },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.search = $event.target.value
+                }
+              }
+            })
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "table",
+      {
+        staticClass: "table table-bordered is-fullwidth",
+        attrs: { dir: "rtl" }
+      },
+      [
+        _vm._m(0, false, false),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          _vm._l(_vm.filtered, function(book) {
+            return _c("tr", [
+              _c("td", [
+                _c("a", { attrs: { href: "/books/" + book.id } }, [
+                  _vm._v(_vm._s(book.name_ar))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c("a", { attrs: { href: "/books/" + book.id } }, [
+                  _vm._v(_vm._s(book.name_en))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _vm._v(_vm._s(_vm.universities[book.university_id - 1].name_ar))
+              ]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(book.price) + "د")]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(book.year))]),
+              _vm._v(" "),
+              _c("td", [_vm._v("-")])
+            ])
+          })
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("اسم الكتاب")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("اسم الكتاب EN")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("الجامعة")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("السعر")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("الطبعة")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("الإجراء")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-b45d0940", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-e6c10e1e\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0&bustCache!./resources/assets/js/components/uniBooks.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("section", [
+    _c("form", { attrs: { action: "" } }, [
+      _c("div", { staticClass: "columns is-centered" }, [
+        _c("div", { staticClass: "field column is-half" }, [
+          _c("div", { staticClass: "control" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.search,
+                  expression: "search"
+                }
+              ],
+              staticClass: "input",
+              attrs: {
+                type: "text",
+                placeholder: "اسم الكتاب",
+                name: "name_ar",
+                required: ""
+              },
+              domProps: { value: _vm.search },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.search = $event.target.value
+                }
+              }
+            })
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "table",
+      {
+        staticClass: "table table-bordered is-fullwidth",
+        attrs: { dir: "rtl" }
+      },
+      [
+        _vm._m(0, false, false),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          _vm._l(_vm.filtered, function(book) {
+            return _c("tr", [
+              _c("td", [
+                _c("a", { attrs: { href: "/books/" + book.id } }, [
+                  _vm._v(_vm._s(book.name_ar))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(book.price) + "د")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("-")])
+            ])
+          })
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("اسم الكتاب")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("السعر")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("الإجراء")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-e6c10e1e", module.exports)
+  }
+}
+
+/***/ }),
+
 /***/ "./node_modules/vue/dist/vue.common.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -30200,11 +30561,13 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_buefy___default.a);
 
 Vue.component('uni-input', __webpack_require__("./resources/assets/js/components/universtiesInput.vue"));
 
+Vue.component('uni-books', __webpack_require__("./resources/assets/js/components/uniBooks.vue"));
+
+Vue.component('all-books', __webpack_require__("./resources/assets/js/components/allBooks.vue"));
+
 var app = new Vue({
-  el: '#app',
-  data: {
-    message: 'Hello from the Vue side'
-  }
+    el: '#app'
+
 });
 
 /***/ }),
@@ -30264,6 +30627,104 @@ if (token) {
 //     broadcaster: 'pusher',
 //     key: 'your-pusher-key'
 // });
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/allBooks.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
+/* script */
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0&bustCache!./resources/assets/js/components/allBooks.vue")
+/* template */
+var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-b45d0940\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0&bustCache!./resources/assets/js/components/allBooks.vue")
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\allBooks.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-b45d0940", Component.options)
+  } else {
+    hotAPI.reload("data-v-b45d0940", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/uniBooks.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
+/* script */
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0&bustCache!./resources/assets/js/components/uniBooks.vue")
+/* template */
+var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-e6c10e1e\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0&bustCache!./resources/assets/js/components/uniBooks.vue")
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\uniBooks.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-e6c10e1e", Component.options)
+  } else {
+    hotAPI.reload("data-v-e6c10e1e", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
 
 /***/ }),
 

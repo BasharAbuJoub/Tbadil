@@ -16,4 +16,11 @@ class AdminController extends Controller
 
     }
 
+
+    public function universitiesIndex(){
+
+        return view('admin.universities');
+
+    }
+
 }

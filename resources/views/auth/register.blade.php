@@ -29,11 +29,6 @@
                         {{ csrf_field() }}
 
 
-                        @if(!empty($erros))
-                            {{dd($errors)}}
-                        @endif
-
-
                         <div class="field">
                             <label class="label">الإسم الثلاثي</label>
                             <div class="control">

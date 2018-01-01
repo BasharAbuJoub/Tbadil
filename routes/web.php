@@ -14,31 +14,18 @@ Route::prefix('profile')->middleware('auth')->group(function (){
 
 
 //Books
-Route::resource('books', 'BooksController');
+Route::resource('books', 'BooksController')->middleware('auth');
 
 //Admin
 Route::prefix('admin')->middleware('auth')->group(function (){
     Route::get('/books', 'AdminController@booksIndex')->name('admin.books');
-    Route::get('/universities', function (){})->name('admin.universities');
-    Route::get('/users', function (){})->name('admin.users');
+    Route::get('/universities', 'AdminController@universitiesIndex')->name('admin.universities');
+    Route::get('/users', 'AdminController@usersIndex')->name('admin.users');
 });
 
 
 
 //Mixed
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
-
-
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
-
-
-//API
-
-
-Route::get('/api/universities/', function(){
-
-    return \App\University::all('id', 'name_ar', 'name_en');
-
-})->name('api.universities');
+Auth::routes();

@@ -16,13 +16,16 @@
 
 <script>
     export default {
-        props: ['unis'],
+        data(){
+            return{
+                unis: []
+            }
+        },
         mounted() {
             var slef = this;
             axios.get('/api/universities')
                 .then(function (response) {
                     slef.unis = response.data;
-                    console.log(this.unis);
                 })
                 .catch(function (error) {
                     console.log(error);

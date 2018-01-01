@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Book;
+use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -71,6 +72,11 @@ class BooksController extends Controller
     public function show($id)
     {
         //
+
+        $book = Book::find($id);
+        $target = Order::where('book_id', $book->id)->where('buyer_id', null)->first();
+        return view('books.book')->with(compact('book'))->with(compact('target'));
+
     }
 
     /**
