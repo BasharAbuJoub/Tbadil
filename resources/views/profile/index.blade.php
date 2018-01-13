@@ -132,10 +132,6 @@
 
                         </div>
 
-
-
-
-
                     </div>
                     <div class="field">
                         <div class="control">
@@ -143,19 +139,12 @@
                         </div>
                     </div>
 
-
-
-
-
-
-
-
-
                 </form>
 
             </div>
         </div>
 
+        
 
         <div class="box has-text-centered">
 
@@ -177,7 +166,7 @@
                         <tbody>
                         @foreach($user->sellOrders()->get() as $order )
                             <tr>
-                                <td><a href="{{route('order', ['id'=> $order->id])}}">{{$order->id}}</a></td>
+                                <td><a href="{{route('order', ['id'=> $order->id])}}">{{$order->id}}#</a></td>
                                 <td>{{$order->book()->name_ar}}</td>
                                 <td>{{$order->book()->price}}د</td>
                                 <td>{{$order->status == 1 ? 'تمت ' : 'انتظار'}}</td>
@@ -185,11 +174,6 @@
                                     <a href="{{route('order', ['id'=> $order->id])}}" class="button is-small" title="Order page">
                                             <span class="icon is-small">
                                               <i class="fa fa-info"></i>
-                                            </span>
-                                    </a>
-                                    <a href="#" class="button is-small" title="Cancel">
-                                            <span class="icon is-small">
-                                              <i class="fa fa-trash-o"></i>
                                             </span>
                                     </a>
                                 </td>
@@ -215,7 +199,7 @@
                         <tbody>
                         @foreach($user->purchaseOrders()->get() as $order )
                             <tr>
-                                <td><a href="{{route('order', ['id'=> $order->id])}}">{{$order->id}}</a></td>
+                                <td><a href="{{route('order', ['id'=> $order->id])}}">{{$order->id}}#</a></td>
                                 <td>{{$order->book()->name_ar}}</td>
                                 <td>{{$order->book()->price}}د</td>
                                 <td>{{$order->status == 1 ? 'تمت ' : 'انتظار'}}</td>
@@ -223,11 +207,6 @@
                                     <a href="{{route('order', ['id'=> $order->id])}}" class="button is-small" title="Order page">
                                             <span class="icon is-small">
                                               <i class="fa fa-info"></i>
-                                            </span>
-                                    </a>
-                                    <a href="#" class="button is-small" title="Cancel">
-                                            <span class="icon is-small">
-                                              <i class="fa fa-trash-o"></i>
                                             </span>
                                     </a>
                                 </td>

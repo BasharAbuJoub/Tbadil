@@ -20,6 +20,18 @@ class profileController extends Controller
 
     }
 
+    public function viewProfile($id){
+
+        $user = User::find($id);
+
+        if($user != null)
+            return view('profile.index')->with(compact('user')); 
+        
+        \Session::flash('flash-msg', 'لم يتم العثور على نتيجة');
+        return redirect('/');
+    }
+
+
 
     public function update(Request $r){
 

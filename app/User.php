@@ -50,8 +50,20 @@ class User extends Authenticatable
 
 
     public function admin(){
-        return $this->role == 3;
+        return $this->role >= 3;
     }
+
+
+    public function supervisor(){
+        return $this->role >= 2;
+    }
+
+    public function banned(){
+        return $this->role == -1;
+    }
+
+
+
 
 
 

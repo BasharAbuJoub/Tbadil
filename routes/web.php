@@ -5,14 +5,15 @@ Route::get('/', function () {
     return view('pages.home');
 });
 
-//Profile
+#Profile
 Route::prefix('profile')->middleware('auth')->group(function (){
     Route::get('/','profileController@index')->name('profile');
     Route::post('/update', 'profileController@update')->name('profile.update');
 });
 
 
-//Books
+
+#Books
 Route::resource('books', 'BooksController')->middleware('auth');
 
 Route::prefix('order')->middleware('auth')->group(function (){
@@ -24,20 +25,23 @@ Route::prefix('order')->middleware('auth')->group(function (){
     Route::get('/cancel/{id}', 'OrderController@cancel')->name('order.cancel');
 
     #Order-> Supervisor Only
-    Route::get('/approve/{id}', 'OrderController@approve')->name('order.approve');
-    Route::get('/disapprove/{id}', 'OrderController@disapprove')->name('order.disapprove');
-    Route::get('/done/{id}', 'OrderController@success')->name('order.done');
+    Route::get('/approve/{id}', 'OrderController@approve')->name('order.approve')->middleware('supervisor');
+    Route::get('/disapprove/{id}', 'OrderController@disapprove')->name('order.disapprove')->middleware('supervisor');
+    Route::get('/done/{id}', 'OrderController@success')->name('order.done')->middleware('supervisor');
 });
 
 
+
 //Admin
-Route::prefix('admin')->middleware('auth')->group(function (){
-    Route::get('/books', 'AdminController@booksIndex')->name('admin.books');
-    Route::get('/universities', 'AdminController@universitiesIndex')->name('admin.universities');
-    Route::get('/users', 'AdminController@usersIndex')->name('admin.users');
+Route::prefix('control')->middleware('auth')->group(function (){
+    Route::get('/books', 'AdminController@booksIndex')->name('admin.books')->middleware('admin');
+    Route::get('/universities', 'AdminController@universitiesIndex')->name('admin.universities')->middleware('admin');
+    Route::get('/users', 'AdminController@usersIndex')->name('admin.users')->middleware('admin');
+    Route::get('/dashboard', 'ControlPanelController@index')->name('controlpanel')->middleware('supervisor');
 });
 
 //Mixed
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
+

@@ -1,13 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Book;
-use App\Order;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
+use App\User;
 
-class BooksController extends Controller
+class TestingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +14,8 @@ class BooksController extends Controller
     public function index()
     {
         //
-        
-        return view('books.books');
-
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -29,7 +24,7 @@ class BooksController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -41,26 +36,6 @@ class BooksController extends Controller
     public function store(Request $request)
     {
         //
-
-        if($request->isMethod('post')){
-            $request->validate([
-                'name_ar' => 'required|string|max:255',
-                'name_en' => 'required|string|max:255',
-                'price'=>'required|string',
-                'year'=>'required|string',
-                'university'=>'required|string|exists:universities'
-            ]);
-            Book::create([
-                'name_ar'       =>  $request->input('name_ar'),
-                'name_en'       =>  $request->input('name_en'),
-                'price'         =>  doubleval($request->input('price')),
-                'year'          =>  $request->input('year'),
-                'university_id' =>  $request->input('university')
-            ]);
-            $request->session()->flash('added');
-        }
-        return redirect(route('admin.books'));
-
     }
 
     /**
@@ -72,11 +47,6 @@ class BooksController extends Controller
     public function show($id)
     {
         //
-
-        $book = Book::find($id);
-        $target = Order::where('book_id', $book->id)->where('status', 1)->first();
-        return view('books.book')->with(compact('book'))->with(compact('target'));
-
     }
 
     /**
@@ -112,4 +82,7 @@ class BooksController extends Controller
     {
         //
     }
+
+
+
 }
